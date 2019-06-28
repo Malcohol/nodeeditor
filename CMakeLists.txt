@@ -17,7 +17,7 @@ set(NE_DEVELOPER_DEFAULTS "${is_root_project}" CACHE BOOL "Turns on default sett
 
 option(BUILD_TESTING "Build tests" "${NE_DEVELOPER_DEFAULTS}")
 option(BUILD_EXAMPLES "Build Examples" "${NE_DEVELOPER_DEFAULTS}")
-option(BUILD_SHARED_LIBS "Build as shared library" ON)
+option(BUILD_SHARED_LIBS "Build as shared library" OFF)
 option(BUILD_DEBUG_POSTFIX_D "Append d suffix to debug libraries" OFF)
 option(NE_FORCE_TEST_COLOR "Force colorized unit test output" OFF)
 
@@ -77,7 +77,7 @@ set(CPP_SOURCE_FILES
 
 # If we want to give the option to build a static library,
 # set BUILD_SHARED_LIBS option to OFF
-add_library(nodes
+add_library(nodes STATIC
   ${CPP_SOURCE_FILES}
   ${RESOURCES}
 )
