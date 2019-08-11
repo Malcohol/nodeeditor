@@ -109,9 +109,17 @@ public:
   QWidget *
   embeddedWidget() = 0;
 
+  enum ResizableAxes
+  {
+    NeitherResizable = 0,
+    HorizontallyResizable,
+    VerticallyResizable,
+    BothResizable
+  };
+
   virtual
-  bool
-  resizable() const { return false; }
+  ResizableAxes
+  resizable() const { return NeitherResizable; }
 
   virtual
   NodeValidationState

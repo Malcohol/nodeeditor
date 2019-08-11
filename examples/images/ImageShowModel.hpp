@@ -58,8 +58,8 @@ public:
   QWidget *
   embeddedWidget() override { return _label; }
 
-  bool
-  resizable() const override { return true; }
+  ResizableAxes
+  resizable() const override { return BothResizable; }
 
 protected:
 

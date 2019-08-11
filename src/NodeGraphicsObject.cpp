@@ -291,8 +291,16 @@ mouseMoveEvent(QGraphicsSceneMouseEvent * event)
 
       auto oldSize = w->size();
 
-      oldSize += QSize(diff.x(), diff.y());
-
+      const NodeDataModel::ResizableAxes axes = _node.nodeDataModel()->resizable();
+      if (axes & NodeDataModel::HorizontallyResizable)
+      {
+        oldSize += QSize(diff.x(), 0);
+      }
+      if (axes & NodeDataModel::VerticallyResizable)
+      {
+        oldSize += QSize(0, diff.y());
+      }
+      
       w->setFixedSize(oldSize);
 
       _proxyWidget->setMinimumSize(oldSize);
@@ -383,10 +391,24 @@ hoverMoveEvent(QGraphicsSceneHoverEvent * event)
   auto pos    = event->pos();
   auto & geom = _node.nodeGeometry();
 
-  if (_node.nodeDataModel()->resizable() &&
-      geom.resizeRect().contains(QPoint(pos.x(), pos.y())))
+  if (geom.resizeRect().contains(QPoint(pos.x(), pos.y())))
   {
-    setCursor(QCursor(Qt::SizeFDiagCursor));
+    Qt::CursorShape shape;
+    switch(_node.nodeDataModel()->resizable())
+    {
+      case NodeDataModel::BothResizable:
+        shape = Qt::SizeFDiagCursor;
+        break;
+      case NodeDataModel::HorizontallyResizable:
+        shape = Qt::SizeHorCursor;
+        break;
+      case NodeDataModel::VerticallyResizable:
+        shape = Qt::SizeVerCursor;
+        break;
+      case NodeDataModel::NeitherResizable:
+        shape = Qt::ArrowCursor;
+    } 
+    setCursor(QCursor(shape));
   }
   else
   {
