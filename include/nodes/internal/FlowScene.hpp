@@ -134,6 +134,8 @@ Q_SIGNALS:
 
   void nodeContextMenu(Node& n, const QPointF& pos);
 
+  void nodeResized(Node& n, const QSize& newSize);
+
 private:
 
   using SharedConnection = std::shared_ptr<Connection>;

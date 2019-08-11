@@ -323,6 +323,8 @@ mouseMoveEvent(QGraphicsSceneMouseEvent * event)
       moveConnections();
 
       event->accept();
+
+      _scene.nodeResized(_node, QSize(geom.width(), geom.height()));
     }
   }
   else
