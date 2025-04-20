@@ -1,8 +1,7 @@
-find_package(Catch2 2.3.0 REQUIRED)
+find_package(Catch2 3.8.1 REQUIRED)
 find_package(Qt5 COMPONENTS Test)
 
 add_executable(test_nodes
-  test_main.cpp
   src/TestDragging.cpp
   src/TestDataModelRegistry.cpp
   src/TestFlowScene.cpp
@@ -19,7 +18,7 @@ target_include_directories(test_nodes
 target_link_libraries(test_nodes
   PRIVATE
     NodeEditor::nodes
-    Catch2::Catch2
+    Catch2::Catch2WithMain
     Qt5::Test
 )
 

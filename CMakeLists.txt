@@ -1,5 +1,6 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.11)
 # version 3.4 is required as other do not work with C++14 and clang
+# version 3.11 is required for FetchContent
 
 project(NodeEditor CXX)
 

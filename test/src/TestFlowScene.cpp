@@ -8,7 +8,7 @@
 #include <nodes/Node>
 #include <nodes/NodeDataModel>
 
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 
 #include "ApplicationSetup.hpp"
 #include "Stringify.hpp"
