@@ -4,6 +4,12 @@
 
 namespace QtNodes {
 
+QJsonObject AbstractGraphModel::saveNode(NodeId const nodeId) const {
+    QJsonObject nodeJson;
+    nodeJson["id"] = static_cast<qint64>(nodeId);
+    return nodeJson;
+}
+
 void AbstractGraphModel::portsAboutToBeDeleted(NodeId const nodeId,
                                                PortType const portType,
                                                PortIndex const first,

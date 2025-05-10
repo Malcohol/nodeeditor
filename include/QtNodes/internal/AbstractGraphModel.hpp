@@ -158,7 +158,7 @@ public:
    * Reimplement the function if you want to store/restore the node's
    * inner state during undo/redo node deletion operations.
    */
-    virtual QJsonObject saveNode(NodeId const) const { return {}; }
+    virtual QJsonObject saveNode(NodeId const nodeId) const;
 
     /**
    * Reimplement the function if you want to support:
