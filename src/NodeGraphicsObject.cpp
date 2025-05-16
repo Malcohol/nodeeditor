@@ -189,6 +189,11 @@ void NodeGraphicsObject::mousePressEvent(QGraphicsSceneMouseEvent *event)
         if (portIndex == InvalidPortIndex)
             continue;
 
+        if (_graphModel.portData(_nodeId, portToCheck, portIndex, PortRole::DataType).value<NodeDataType>().id.isEmpty()) {
+            // Empty ID means no port.
+            continue;
+        }
+        
         auto const &connected = _graphModel.connections(_nodeId, portToCheck, portIndex);
 
         // Start dragging existing connection.

@@ -101,6 +101,12 @@ void DefaultNodePainter::drawConnectionPoints(QPainter *painter, NodeGraphicsObj
             auto const &dataType = model.portData(nodeId, portType, portIndex, PortRole::DataType)
                                        .value<NodeDataType>();
 
+            // Empty data types are not drawn.
+            if (dataType.id.isEmpty())
+            {
+                continue;
+            }
+
             double r = 1.0;
 
             NodeState const &state = ngo.nodeState();
