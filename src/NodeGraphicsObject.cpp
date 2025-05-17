@@ -37,14 +37,15 @@ NodeGraphicsObject::NodeGraphicsObject(BasicGraphicsScene &scene, NodeId nodeId)
 
     NodeStyle nodeStyle(nodeStyleJson);
 
-    {
-        auto effect = new QGraphicsDropShadowEffect;
-        effect->setOffset(4, 4);
-        effect->setBlurRadius(20);
-        effect->setColor(nodeStyle.ShadowColor);
-
-        setGraphicsEffect(effect);
-    }
+    // Disabled until QTBUG-77400 resolved
+    //{
+    //    auto effect = new QGraphicsDropShadowEffect;
+    //    effect->setOffset(4, 4);
+    //    effect->setBlurRadius(20);
+    //    effect->setColor(nodeStyle.ShadowColor);
+    //
+    //    setGraphicsEffect(effect);
+    //}
 
     setOpacity(nodeStyle.Opacity);
 
