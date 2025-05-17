@@ -100,12 +100,7 @@ void NodeGraphicsObject::embedQWidget()
         geometry.recomputeSize(_nodeId);
 
         if (w->sizePolicy().verticalPolicy() & QSizePolicy::ExpandFlag) {
-            unsigned int widgetHeight = geometry.size(_nodeId).height()
-                                        - geometry.captionRect(_nodeId).height();
-
-            // If the widget wants to use as much vertical space as possible, set
-            // it to have the geom's equivalentWidgetHeight.
-            _proxyWidget->setMinimumHeight(widgetHeight);
+            _proxyWidget->setMinimumHeight(geometry.availableWidgetSize(_nodeId).height());
         }
 
         updateQWidgetEmbedPos();

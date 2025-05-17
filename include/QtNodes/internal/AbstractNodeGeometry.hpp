@@ -66,6 +66,10 @@ public:
     /// Position for an embedded widget. Return any value if you don't embed.
     virtual QPointF widgetPosition(NodeId const nodeId) const = 0;
 
+    /// Maximum height available to embedded widgets that want to expand to the available size.
+    /// A 0 in a component means that the geometry does not constraint that axis.
+    virtual QSizeF availableWidgetSize(NodeId const nodeId) const = 0;
+
     virtual PortIndex checkPortHit(NodeId const nodeId,
                                    PortType const portType,
                                    QPointF const nodePoint) const;

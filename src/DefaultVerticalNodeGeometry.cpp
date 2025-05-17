@@ -190,6 +190,11 @@ QPointF DefaultVerticalNodeGeometry::widgetPosition(NodeId const nodeId) const
     return QPointF();
 }
 
+QSizeF DefaultVerticalNodeGeometry::availableWidgetSize(NodeId const nodeId) const {
+    // TODO
+    return QSize(0, size(nodeId).height() - captionRect(nodeId).height());
+}
+
 QRect DefaultVerticalNodeGeometry::resizeHandleRect(NodeId const nodeId) const
 {
     QSize size = _graphModel.nodeData<QSize>(nodeId, NodeRole::Size);

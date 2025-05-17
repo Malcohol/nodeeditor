@@ -33,6 +33,8 @@ public:
 
     QPointF widgetPosition(NodeId const nodeId) const override;
 
+    QSizeF availableWidgetSize(NodeId const nodeId) const override;
+
     QRect resizeHandleRect(NodeId const nodeId) const override;
 
 private:

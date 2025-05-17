@@ -164,6 +164,10 @@ QPointF DefaultHorizontalNodeGeometry::widgetPosition(NodeId const nodeId) const
     return QPointF();
 }
 
+QSizeF DefaultHorizontalNodeGeometry::availableWidgetSize(NodeId const nodeId) const {
+    return QSizeF(0, size(nodeId).height() - captionRect(nodeId).height() - (2.0 * _portSpasing));
+}
+
 QRect DefaultHorizontalNodeGeometry::resizeHandleRect(NodeId const nodeId) const
 {
     QSize size = _graphModel.nodeData<QSize>(nodeId, NodeRole::Size);
